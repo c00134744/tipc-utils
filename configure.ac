@@ -36,6 +36,7 @@ AC_CONFIG_FILES([
 	tipc-config/Makefile
 	tipc-pipe/Makefile
 	tipc/Makefile
+	tipc2/Makefile
 	ptts/Makefile
 	demos/Makefile
 	demos/benchmark/Makefile
