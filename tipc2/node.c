@@ -44,7 +44,7 @@
 
 static int node_list_cb(const struct nlmsghdr *nlh, void *data)
 {
-	__u32 addr;
+	uint32_t addr;
 	struct genlmsghdr *genl = mnl_nlmsg_get_payload(nlh);
 	struct nlattr *info[TIPC_NLA_MAX + 1];
 	struct nlattr *attrs[TIPC_NLA_NODE_MAX + 1];
@@ -93,7 +93,7 @@ static int cmd_node_set_addr(struct nlmsghdr *nlh, const struct cmd *cmd,
 			     struct cmdl *cmdl, void *data)
 {
 	char *str;
-	__u32 addr;
+	uint32_t addr;
 	struct nlattr *nest;
 	char buf[MNL_SOCKET_BUFFER_SIZE];
 

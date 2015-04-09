@@ -214,7 +214,7 @@ static int cmd_link_stat_reset(struct nlmsghdr *nlh, const struct cmd *cmd,
 	return msg_doit(nlh, NULL, NULL);
 }
 
-static __u32 perc(__u32 count, __u32 total)
+static uint32_t perc(uint32_t count, uint32_t total)
 {
 	return (count * 100 + (total / 2)) / total;
 }
@@ -222,7 +222,7 @@ static __u32 perc(__u32 count, __u32 total)
 static int _show_link_stat(struct nlattr *attrs[], struct nlattr *prop[],
 			   struct nlattr *stats[])
 {
-	__u32 proft;
+	uint32_t proft;
 
 	if (attrs[TIPC_NLA_LINK_ACTIVE])
 		printf("  ACTIVE");

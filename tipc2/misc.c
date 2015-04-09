@@ -28,11 +28,12 @@
  */
 
 #include <stdio.h>
+#include <stdint.h>
 #include <linux/tipc.h>
 
 #define IN_RANGE(val, low, high) (val <= high && val >= low)
 
-__u32 str2addr(char *str)
+uint32_t str2addr(char *str)
 {
 	unsigned int z, c, n;
 	char dummy;

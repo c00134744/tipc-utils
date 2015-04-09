@@ -30,6 +30,8 @@
 #ifndef _TIPC_MISC_H
 #define _TIPC_MISC_H
 
-__u32 str2addr(char *str);
+#include <stdint.h>
+
+uint32_t str2addr(char *str);
 
 #endif

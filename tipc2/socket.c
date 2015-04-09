@@ -61,7 +61,7 @@ static int publ_list_cb(const struct nlmsghdr *nlh, void *data)
 	return MNL_CB_OK;
 }
 
-static int publ_list(__u32 sock)
+static int publ_list(uint32_t sock)
 {
 	struct nlmsghdr *nlh;
 	char buf[MNL_SOCKET_BUFFER_SIZE];
@@ -96,7 +96,7 @@ static int sock_list_cb(const struct nlmsghdr *nlh, void *data)
 	printf("socket %u\n", mnl_attr_get_u32(attrs[TIPC_NLA_SOCK_REF]));
 
 	if (attrs[TIPC_NLA_SOCK_CON]) {
-		__u32 node;
+		uint32_t node;
 		struct nlattr *con[TIPC_NLA_CON_MAX + 1];
 
 		mnl_attr_parse_nested(attrs[TIPC_NLA_SOCK_CON], parse_attrs, con);
