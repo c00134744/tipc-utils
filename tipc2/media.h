@@ -30,6 +30,8 @@
 #ifndef _TIPC_MEDIA_H
 #define _TIPC_MEDIA_H
 
+extern int help_flag;
+
 int cmd_media(struct nlmsghdr *nlh, const struct cmd *cmd, struct cmdl *cmdl,
 	     void *data);
 void cmd_media_help(struct cmdl *cmdl);

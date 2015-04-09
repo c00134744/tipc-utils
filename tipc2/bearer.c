@@ -42,8 +42,7 @@
 
 #include "cmdl.h"
 #include "msg.h"
-
-extern int help_flag;
+#include "bearer.h"
 
 static void _print_bearer_opts(void)
 {

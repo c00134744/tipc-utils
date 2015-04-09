@@ -40,8 +40,7 @@
 #include "cmdl.h"
 #include "msg.h"
 #include "misc.h"
-
-extern int help_flag;
+#include "node.h"
 
 static int node_list_cb(const struct nlmsghdr *nlh, void *data)
 {

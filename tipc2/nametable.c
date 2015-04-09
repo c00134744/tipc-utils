@@ -37,10 +37,9 @@
 
 #include "cmdl.h"
 #include "msg.h"
+#include "nametable.h"
 
 #define PORTID_STR_LEN 45 /* Four u32 and five delimiter chars */
-
-extern int help_flag;
 
 static int nametable_show_cb(const struct nlmsghdr *nlh, void *data)
 {

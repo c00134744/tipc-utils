@@ -35,8 +35,6 @@
 
 #include "cmdl.h"
 
-extern int help_flag;
-
 const struct cmd *find_cmd(const struct cmd *cmds, char *str)
 {
 	const struct cmd *c;

@@ -32,6 +32,8 @@
 
 #include "cmdl.h"
 
+extern int help_flag;
+
 int cmd_bearer(struct nlmsghdr *nlh, const struct cmd *cmd, struct cmdl *cmdl, void *data);
 void cmd_bearer_help(struct cmdl *cmdl);
 

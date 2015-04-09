@@ -39,8 +39,7 @@
 
 #include "cmdl.h"
 #include "msg.h"
-
-extern int help_flag;
+#include "media.h"
 
 static int media_list_cb(const struct nlmsghdr *nlh, void *data)
 {

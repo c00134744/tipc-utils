@@ -37,10 +37,9 @@
 
 #include "cmdl.h"
 #include "msg.h"
+#include "socket.h"
 
 #define PORTID_STR_LEN 45 /* Four u32 and five delimiter chars */
-
-extern int help_flag;
 
 static int publ_list_cb(const struct nlmsghdr *nlh, void *data)
 {
