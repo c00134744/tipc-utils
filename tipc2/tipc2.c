@@ -65,7 +65,7 @@ static void about(struct cmdl *cmdl)
 
 int main(int argc, char *argv[])
 {
-	int c;
+	int i;
 	int res;
 	struct cmdl cmdl;
 	const struct cmd cmd = {"tipc", NULL, about};
@@ -86,13 +86,13 @@ int main(int argc, char *argv[])
 	while (1) {
 		int option_index = 0;
 
-		c = getopt_long(argc, argv, "vh", long_options, &option_index);
+		i = getopt_long(argc, argv, "vh", long_options, &option_index);
 
 		/* End of options */
-		if (c == -1)
+		if (i == -1)
 			break;
 
-		switch (c) {
+		switch (i) {
 		case 'h':
 			/*
 			 * We want the help for the last command, so we flag
