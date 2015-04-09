@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
 	do {
 		int option_index = 0;
 
-		i = getopt_long(argc, argv, "vh", long_options, &option_index);
+		i = getopt_long(argc, argv, "h", long_options, &option_index);
 
 		switch (i) {
 		case 'h':
