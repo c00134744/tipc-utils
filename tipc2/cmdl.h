@@ -35,7 +35,7 @@
 extern int help_flag;
 
 struct cmdl {
-	int optind;	/* How long into argv we are */
+	int optind;
 	int argc;
 	char **argv;
 };
