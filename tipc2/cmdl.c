@@ -91,6 +91,7 @@ char *shift_cmdl(struct cmdl *cmdl)
 	return cmdl->argv[next];
 }
 
+/* Returns the number of options parsed or a negative error code upon failure */
 int parse_opts(struct opt *opts, struct cmdl *cmdl)
 {
 	int i;
