@@ -212,7 +212,7 @@ static void cmd_bearer_enable_help(struct cmdl *cmdl)
 		" domain DOMAIN         - Discovery domain\n"
 		" priority PRIORITY     - Bearer priority\n",
 		cmdl->argv[0]);
-		_print_bearer_media();
+	_print_bearer_media();
 }
 
 static int cmd_bearer_enable(struct nlmsghdr *nlh, const struct cmd *cmd,
@@ -340,7 +340,7 @@ static void cmd_bearer_disable_help(struct cmdl *cmdl)
 {
 	fprintf(stderr, "Usage: %s bearer disable media MEDIA ARGS...\n",
 		cmdl->argv[0]);
-		_print_bearer_media();
+	_print_bearer_media();
 }
 
 static int cmd_bearer_disable(struct nlmsghdr *nlh, const struct cmd *cmd,
@@ -408,15 +408,15 @@ static void cmd_bearer_set_help(struct cmdl *cmdl)
 {
 	fprintf(stderr, "Usage: %s bearer set [OPTIONS] media MEDIA ARGS...\n",
 		cmdl->argv[0]);
-		_print_bearer_opts();
-		_print_bearer_media();
+	_print_bearer_opts();
+	_print_bearer_media();
 }
 
 static void cmd_bearer_set_udp_help(struct cmdl *cmdl)
 {
 	fprintf(stderr, "Usage: %s bearer set [OPTIONS] media udp name NAME\n\n",
 		cmdl->argv[0]);
-		_print_bearer_opts();
+	_print_bearer_opts();
 }
 
 static void cmd_bearer_set_l2_help(struct cmdl *cmdl, char *media)
@@ -424,7 +424,7 @@ static void cmd_bearer_set_l2_help(struct cmdl *cmdl, char *media)
 	fprintf(stderr,
 		"Usage: %s bearer set [OPTION]... media %s device DEVICE\n",
 		cmdl->argv[0], media);
-		_print_bearer_opts();
+	_print_bearer_opts();
 }
 
 static int cmd_bearer_set_prop(struct nlmsghdr *nlh, const struct cmd *cmd,
@@ -524,15 +524,15 @@ static void cmd_bearer_get_help(struct cmdl *cmdl)
 {
 	fprintf(stderr, "Usage: %s bearer get [OPTIONS] media MEDIA ARGS...\n",
 		cmdl->argv[0]);
-		_print_bearer_opts();
-		_print_bearer_media();
+	_print_bearer_opts();
+	_print_bearer_media();
 }
 
 static void cmd_bearer_get_udp_help(struct cmdl *cmdl)
 {
 	fprintf(stderr, "Usage: %s bearer get [OPTIONS] media udp name NAME\n\n",
 		cmdl->argv[0]);
-		_print_bearer_opts();
+	_print_bearer_opts();
 }
 
 static void cmd_bearer_get_l2_help(struct cmdl *cmdl, char *media)
@@ -540,7 +540,7 @@ static void cmd_bearer_get_l2_help(struct cmdl *cmdl, char *media)
 	fprintf(stderr,
 		"Usage: %s bearer get [OPTION]... media %s device DEVICE\n",
 		cmdl->argv[0], media);
-		_print_bearer_opts();
+	_print_bearer_opts();
 }
 
 static int bearer_get_cb(const struct nlmsghdr *nlh, void *data)
