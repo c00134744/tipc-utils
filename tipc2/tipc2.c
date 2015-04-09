@@ -83,14 +83,10 @@ int main(int argc, char *argv[])
 		{ NULL }
 	};
 
-	while (1) {
+	do {
 		int option_index = 0;
 
 		i = getopt_long(argc, argv, "vh", long_options, &option_index);
-
-		/* End of options */
-		if (i == -1)
-			break;
 
 		switch (i) {
 		case 'h':
@@ -100,11 +96,14 @@ int main(int argc, char *argv[])
 			 */
 			help_flag = 1;
 			break;
+		case -1:
+			/* End of options */
+			break;
 		default:
 			/* Invalid option, error msg is printed by getopts */
 			return EXIT_FAILURE;
 		}
-	}
+	} while (i != -1);
 
 	cmdl.optind = optind;
 	cmdl.argc = argc;
