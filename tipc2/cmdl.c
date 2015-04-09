@@ -72,9 +72,10 @@ struct opt *get_opt(struct opt *opts, char *key)
 {
 	struct opt *o;
 
-	for (o = opts; o->key; o++)
+	for (o = opts; o->key; o++) {
 		if (strcmp(o->key, key) == 0 && o->val)
 			return o;
+	}
 
 	return NULL;
 }
