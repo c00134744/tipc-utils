@@ -49,6 +49,7 @@ static int nametable_show_cb(const struct nlmsghdr *nlh, void *data)
 	struct nlattr *info[TIPC_NLA_MAX + 1];
 	struct nlattr *attrs[TIPC_NLA_NAME_TABLE_MAX + 1];
 	struct nlattr *publ[TIPC_NLA_PUBL_MAX + 1];
+	const char *scope[] = { "", "zone", "cluster", "node" };
 
 	mnl_attr_parse(nlh, sizeof(*genl), parse_attrs, info);
 	if (!info[TIPC_NLA_NAME_TABLE])
@@ -81,20 +82,7 @@ static int nametable_show_cb(const struct nlmsghdr *nlh, void *data)
 	       port_id,
 	       mnl_attr_get_u32(publ[TIPC_NLA_PUBL_KEY]));
 
-	switch (mnl_attr_get_u32(publ[TIPC_NLA_PUBL_SCOPE])) {
-	case 1:
-		printf("zone\n");
-		break;
-	case 2:
-		printf("cluster\n");
-		break;
-	case 3:
-		printf("node\n");
-		break;
-	default:
-		printf("\n");
-		break;
-	}
+	printf("%s\n", scope[mnl_attr_get_u32(publ[TIPC_NLA_PUBL_SCOPE])]);
 
 	return MNL_CB_OK;
 }
