@@ -27,8 +27,6 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#define _GNU_SOURCE
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <getopt.h>
@@ -101,7 +99,7 @@ int main(int argc, char *argv[])
 			break;
 		default:
 			/* Invalid option, error msg is printed by getopts */
-			return EXIT_FAILURE;
+			return 1;
 		}
 	} while (i != -1);
 
@@ -110,7 +108,7 @@ int main(int argc, char *argv[])
 	cmdl.argv = argv;
 
 	if ((res = run_cmd(NULL, &cmd, cmds, &cmdl, NULL)) != 0)
-		return EXIT_FAILURE;
+		return 1;
 
-	return EXIT_SUCCESS;
+	return 0;
 }
