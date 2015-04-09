@@ -132,7 +132,7 @@ int cmd_nametable(struct nlmsghdr *nlh, const struct cmd *cmd, struct cmdl *cmdl
 {
 	const struct cmd cmds[] = {
 		{ "show",	cmd_nametable_show,	NULL },
-		{ 0 }
+		{ NULL }
 	};
 
 	return run_cmd(nlh, cmd, cmds, cmdl, NULL);

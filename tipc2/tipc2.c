@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
 		{ "nametable",	cmd_nametable,	cmd_nametable_help},
 		{ "node",	cmd_node,	cmd_node_help},
 		{ "socket",	cmd_socket,	cmd_socket_help},
-		{ 0 }
+		{ NULL }
 	};
 
 	while (1) {

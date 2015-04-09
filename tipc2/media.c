@@ -112,7 +112,7 @@ static int cmd_media_get_prop(struct nlmsghdr *nlh, const struct cmd *cmd,
 	struct opt *opt;
 	struct opt opts[] = {
 		{ "media",		NULL },
-		{ 0 }
+		{ NULL }
 	};
 
 	if (strcmp(cmd->cmd, "priority") == 0)
@@ -165,7 +165,7 @@ static int cmd_media_get(struct nlmsghdr *nlh, const struct cmd *cmd,
 		{ "priority",	cmd_media_get_prop,	cmd_media_get_help },
 		{ "tolerance",	cmd_media_get_prop,	cmd_media_get_help },
 		{ "window",	cmd_media_get_prop,	cmd_media_get_help },
-		{ 0 }
+		{ NULL }
 	};
 
 	return run_cmd(nlh, cmd, cmds, cmdl, NULL);
@@ -192,7 +192,7 @@ static int cmd_media_set_prop(struct nlmsghdr *nlh, const struct cmd *cmd,
 	struct opt *opt;
 	struct opt opts[] = {
 		{ "media",		NULL },
-		{ 0 }
+		{ NULL }
 	};
 
 	if (strcmp(cmd->cmd, "priority") == 0)
@@ -246,7 +246,7 @@ static int cmd_media_set(struct nlmsghdr *nlh, const struct cmd *cmd,
 		{ "priority",	cmd_media_set_prop,	cmd_media_set_help },
 		{ "tolerance",	cmd_media_set_prop,	cmd_media_set_help },
 		{ "window",	cmd_media_set_prop,	cmd_media_set_help },
-		{ 0 }
+		{ NULL }
 	};
 
 	return run_cmd(nlh, cmd, cmds, cmdl, NULL);
@@ -271,7 +271,7 @@ int cmd_media(struct nlmsghdr *nlh, const struct cmd *cmd, struct cmdl *cmdl,
 		{ "get",	cmd_media_get,	cmd_media_get_help },
 		{ "list",	cmd_media_list,	NULL },
 		{ "set",	cmd_media_set,	cmd_media_set_help },
-		{ 0 }
+		{ NULL }
 	};
 
 	return run_cmd(nlh, cmd, cmds, cmdl, NULL);

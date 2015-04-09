@@ -232,7 +232,7 @@ static int cmd_node_set(struct nlmsghdr *nlh, const struct cmd *cmd,
 	const struct cmd cmds[] = {
 		{ "address",	cmd_node_set_addr,	NULL },
 		{ "netid",	cmd_node_set_netid,	NULL },
-		{ 0 }
+		{ NULL }
 	};
 
 	return run_cmd(nlh, cmd, cmds, cmdl, NULL);
@@ -254,7 +254,7 @@ static int cmd_node_get(struct nlmsghdr *nlh, const struct cmd *cmd,
 	const struct cmd cmds[] = {
 		{ "address",	cmd_node_get_addr,	NULL },
 		{ "netid",	cmd_node_get_netid,	NULL },
-		{ 0 }
+		{ NULL }
 	};
 
 	return run_cmd(nlh, cmd, cmds, cmdl, NULL);
@@ -278,7 +278,7 @@ int cmd_node(struct nlmsghdr *nlh, const struct cmd *cmd, struct cmdl *cmdl,
 		{ "list",	cmd_node_list,	NULL },
 		{ "get",	cmd_node_get,	cmd_node_get_help },
 		{ "set",	cmd_node_set,	cmd_node_set_help },
-		{ 0 }
+		{ NULL }
 	};
 
 	return run_cmd(nlh, cmd, cmds, cmdl, NULL);

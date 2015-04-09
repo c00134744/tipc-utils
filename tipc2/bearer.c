@@ -233,7 +233,7 @@ static int cmd_bearer_enable(struct nlmsghdr *nlh, const struct cmd *cmd,
 		{ "priority",		NULL },
 		{ "remoteip",		NULL },
 		{ "remoteport",		NULL },
-		{ 0 }
+		{ NULL }
 	};
 
 	if (parse_opts(opts, cmdl) < 0) {
@@ -355,7 +355,7 @@ static int cmd_bearer_disable(struct nlmsghdr *nlh, const struct cmd *cmd,
 		{ "device",		NULL },
 		{ "name",		NULL },
 		{ "media",		NULL },
-		{ 0 }
+		{ NULL }
 	};
 
 	if (parse_opts(opts, cmdl) < 0) {
@@ -442,7 +442,7 @@ static int cmd_bearer_set_prop(struct nlmsghdr *nlh, const struct cmd *cmd,
 		{ "device",		NULL },
 		{ "media",		NULL },
 		{ "name",		NULL },
-		{ 0 }
+		{ NULL }
 	};
 
 	if (strcmp(cmd->cmd, "priority") == 0)
@@ -514,7 +514,7 @@ static int cmd_bearer_set(struct nlmsghdr *nlh, const struct cmd *cmd,
 		{ "priority",	cmd_bearer_set_prop,	cmd_bearer_set_help },
 		{ "tolerance",	cmd_bearer_set_prop,	cmd_bearer_set_help },
 		{ "window",	cmd_bearer_set_prop,	cmd_bearer_set_help },
-		{ 0 }
+		{ NULL }
 	};
 
 	return run_cmd(nlh, cmd, cmds, cmdl, NULL);
@@ -581,7 +581,7 @@ static int cmd_bearer_get_prop(struct nlmsghdr *nlh, const struct cmd *cmd,
 		{ "device",		NULL },
 		{ "media",		NULL },
 		{ "name",		NULL },
-		{ 0 }
+		{ NULL }
 	};
 
 	if (strcmp(cmd->cmd, "priority") == 0)
@@ -643,7 +643,7 @@ static int cmd_bearer_get(struct nlmsghdr *nlh, const struct cmd *cmd,
 		{ "priority",	cmd_bearer_get_prop,	cmd_bearer_get_help },
 		{ "tolerance",	cmd_bearer_get_prop,	cmd_bearer_get_help },
 		{ "window",	cmd_bearer_get_prop,	cmd_bearer_get_help },
-		{ 0 }
+		{ NULL }
 	};
 
 	return run_cmd(nlh, cmd, cmds, cmdl, NULL);
@@ -712,7 +712,7 @@ int cmd_bearer(struct nlmsghdr *nlh, const struct cmd *cmd, struct cmdl *cmdl,
 		{ "get",	cmd_bearer_get,		cmd_bearer_get_help },
 		{ "list",	cmd_bearer_list,	NULL },
 		{ "set",	cmd_bearer_set,		cmd_bearer_set_help },
-		{ 0 }
+		{ NULL }
 	};
 
 	return run_cmd(nlh, cmd, cmds, cmdl, NULL);

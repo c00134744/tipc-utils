@@ -112,7 +112,7 @@ static int cmd_link_get_prop(struct nlmsghdr *nlh, const struct cmd *cmd,
 	struct opt *opt;
 	struct opt opts[] = {
 		{ "link",		NULL },
-		{ 0 }
+		{ NULL }
 	};
 
 	if (strcmp(cmd->cmd, "priority") == 0)
@@ -163,7 +163,7 @@ static int cmd_link_get(struct nlmsghdr *nlh, const struct cmd *cmd,
 		{ "priority",	cmd_link_get_prop,	cmd_link_get_help },
 		{ "tolerance",	cmd_link_get_prop,	cmd_link_get_help },
 		{ "window",	cmd_link_get_prop,	cmd_link_get_help },
-		{ 0 }
+		{ NULL }
 	};
 
 	return run_cmd(nlh, cmd, cmds, cmdl, NULL);
@@ -183,7 +183,7 @@ static int cmd_link_stat_reset(struct nlmsghdr *nlh, const struct cmd *cmd,
 	struct nlattr *nest;
 	struct opt opts[] = {
 		{ "link",		NULL },
-		{ 0 }
+		{ NULL }
 	};
 
 	if (help_flag) {
@@ -378,7 +378,7 @@ static int cmd_link_stat_show(struct nlmsghdr *nlh, const struct cmd *cmd,
 	struct opt *opt;
 	struct opt opts[] = {
 		{ "link",		NULL },
-		{ 0 }
+		{ NULL }
 	};
 
 	if (help_flag) {
@@ -417,7 +417,7 @@ static int cmd_link_stat(struct nlmsghdr *nlh, const struct cmd *cmd,
 	const struct cmd cmds[] = {
 		{ "reset",	cmd_link_stat_reset,	cmd_link_stat_reset_help },
 		{ "show",	cmd_link_stat_show,	cmd_link_stat_show_help },
-		{ 0 }
+		{ NULL }
 	};
 
 	return run_cmd(nlh, cmd, cmds, cmdl, NULL);
@@ -444,7 +444,7 @@ static int cmd_link_set_prop(struct nlmsghdr *nlh, const struct cmd *cmd,
 	struct opt *opt;
 	struct opt opts[] = {
 		{ "link",	NULL },
-		{ 0 }
+		{ NULL }
 	};
 
 	if (strcmp(cmd->cmd, "priority") == 0)
@@ -500,7 +500,7 @@ static int cmd_link_set(struct nlmsghdr *nlh, const struct cmd *cmd,
 		{ "priority",	cmd_link_set_prop,	cmd_link_set_help },
 		{ "tolerance",	cmd_link_set_prop,	cmd_link_set_help },
 		{ "window",	cmd_link_set_prop,	cmd_link_set_help },
-		{ 0 }
+		{ NULL }
 	};
 
 	return run_cmd(nlh, cmd, cmds, cmdl, NULL);
@@ -527,7 +527,7 @@ int cmd_link(struct nlmsghdr *nlh, const struct cmd *cmd, struct cmdl *cmdl,
 		{ "list",	cmd_link_list,	NULL },
 		{ "set",	cmd_link_set,	cmd_link_set_help },
 		{ "statistics", cmd_link_stat,	cmd_link_stat_help },
-		{ 0 }
+		{ NULL }
 	};
 
 	return run_cmd(nlh, cmd, cmds, cmdl, NULL);

@@ -151,7 +151,7 @@ int cmd_socket(struct nlmsghdr *nlh, const struct cmd *cmd, struct cmdl *cmdl,
 {
 	const struct cmd cmds[] = {
 		{ "list",	cmd_socket_list,	NULL },
-		{ 0 }
+		{ NULL }
 	};
 
 	return run_cmd(nlh, cmd, cmds, cmdl, NULL);
