@@ -31,7 +31,7 @@
 #include <stdint.h>
 #include <linux/tipc.h>
 
-#define IN_RANGE(val, low, high) (val <= high && val >= low)
+#define IN_RANGE(val, low, high) ((val) <= (high) && (val) >= (low))
 
 uint32_t str2addr(char *str)
 {
