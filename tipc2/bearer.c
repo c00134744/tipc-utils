@@ -67,8 +67,8 @@ static void print_ai(struct addrinfo *ai)
 	char buf[NI_MAXHOST];
 	char sbuf[NI_MAXSERV];
 
-	if (getnameinfo(ai->ai_addr, ai->ai_addrlen, buf, NI_MAXHOST, sbuf,
-			NI_MAXSERV, NI_NUMERICHOST|NI_NUMERICSERV) == 0)
+	if (getnameinfo(ai->ai_addr, ai->ai_addrlen, buf, sizeof(buf), sbuf,
+			sizeof(sbuf), NI_NUMERICHOST|NI_NUMERICSERV) == 0)
 		printf("host=%s, serv=%s\n", buf, sbuf);
 }
 
