@@ -40,7 +40,7 @@ const struct cmd *find_cmd(const struct cmd *cmds, char *str)
 	const struct cmd *c;
 	const struct cmd *match = NULL;
 
-	for (c = cmds; c->cmd; ++c) {
+	for (c = cmds; c->cmd; c++) {
 		if (strstr(c->cmd, str) != c->cmd)
 			continue;
 		if (match)
@@ -56,7 +56,7 @@ static struct opt *find_opt(struct opt *opts, char *str)
 	struct opt *o;
 	struct opt *match = NULL;
 
-	for (o = opts; o->key; ++o) {
+	for (o = opts; o->key; o++) {
 		if (strstr(o->key, str) != o->key)
 			continue;
 		if (match)
@@ -72,7 +72,7 @@ struct opt *get_opt(struct opt *opts, char *key)
 {
 	struct opt *o;
 
-	for (o = opts; o->key; ++o)
+	for (o = opts; o->key; o++)
 		if (strcmp(o->key, key) == 0 && o->val)
 			return o;
 
