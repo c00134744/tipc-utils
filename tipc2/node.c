@@ -46,8 +46,8 @@ static int node_list_cb(const struct nlmsghdr *nlh, void *data)
 {
 	__u32 addr;
 	struct genlmsghdr *genl = mnl_nlmsg_get_payload(nlh);
-	struct nlattr *info[TIPC_NLA_MAX + 1] = {};
-	struct nlattr *attrs[TIPC_NLA_NODE_MAX + 1] = {};
+	struct nlattr *info[TIPC_NLA_MAX + 1];
+	struct nlattr *attrs[TIPC_NLA_NODE_MAX + 1];
 
 	mnl_attr_parse(nlh, sizeof(*genl), parse_attrs, info);
 	if (!info[TIPC_NLA_NODE])
@@ -151,8 +151,8 @@ static int cmd_node_get_addr(struct nlmsghdr *nlh, const struct cmd *cmd,
 static int netid_get_cb(const struct nlmsghdr *nlh, void *data)
 {
 	struct genlmsghdr *genl = mnl_nlmsg_get_payload(nlh);
-	struct nlattr *info[TIPC_NLA_MAX + 1] = {};
-	struct nlattr *attrs[TIPC_NLA_NET_MAX + 1] = {};
+	struct nlattr *info[TIPC_NLA_MAX + 1];
+	struct nlattr *attrs[TIPC_NLA_NET_MAX + 1];
 
 	mnl_attr_parse(nlh, sizeof(*genl), parse_attrs, info);
 	if (!info[TIPC_NLA_NET])

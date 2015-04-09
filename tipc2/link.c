@@ -44,8 +44,8 @@
 static int link_list_cb(const struct nlmsghdr *nlh, void *data)
 {
 	struct genlmsghdr *genl = mnl_nlmsg_get_payload(nlh);
-	struct nlattr *info[TIPC_NLA_MAX + 1] = {};
-	struct nlattr *attrs[TIPC_NLA_LINK_MAX + 1] = {};
+	struct nlattr *info[TIPC_NLA_MAX + 1];
+	struct nlattr *attrs[TIPC_NLA_LINK_MAX + 1];
 
 	mnl_attr_parse(nlh, sizeof(*genl), parse_attrs, info);
 	if (!info[TIPC_NLA_LINK])
@@ -82,9 +82,9 @@ static int link_get_cb(const struct nlmsghdr *nlh, void *data)
 {
 	int *prop = data;
 	struct genlmsghdr *genl = mnl_nlmsg_get_payload(nlh);
-	struct nlattr *info[TIPC_NLA_MAX + 1] = {};
-	struct nlattr *attrs[TIPC_NLA_LINK_MAX + 1] = {};
-	struct nlattr *props[TIPC_NLA_PROP_MAX + 1] = {};
+	struct nlattr *info[TIPC_NLA_MAX + 1];
+	struct nlattr *attrs[TIPC_NLA_LINK_MAX + 1];
+	struct nlattr *props[TIPC_NLA_PROP_MAX + 1];
 
 	mnl_attr_parse(nlh, sizeof(*genl), parse_attrs, info);
 	if (!info[TIPC_NLA_LINK])
@@ -332,10 +332,10 @@ static int link_stat_show_cb(const struct nlmsghdr *nlh, void *data)
 	const char *name;
 	const char *link = data;
 	struct genlmsghdr *genl = mnl_nlmsg_get_payload(nlh);
-	struct nlattr *info[TIPC_NLA_MAX + 1] = {};
-	struct nlattr *attrs[TIPC_NLA_LINK_MAX + 1] = {};
-	struct nlattr *prop[TIPC_NLA_PROP_MAX + 1] = {};
-	struct nlattr *stats[TIPC_NLA_STATS_MAX + 1] = {};
+	struct nlattr *info[TIPC_NLA_MAX + 1];
+	struct nlattr *attrs[TIPC_NLA_LINK_MAX + 1];
+	struct nlattr *prop[TIPC_NLA_PROP_MAX + 1];
+	struct nlattr *stats[TIPC_NLA_STATS_MAX + 1];
 
 	mnl_attr_parse(nlh, sizeof(*genl), parse_attrs, info);
 	if (!info[TIPC_NLA_LINK])

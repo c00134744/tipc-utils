@@ -44,8 +44,8 @@
 static int publ_list_cb(const struct nlmsghdr *nlh, void *data)
 {
 	struct genlmsghdr *genl = mnl_nlmsg_get_payload(nlh);
-	struct nlattr *info[TIPC_NLA_MAX + 1] = {};
-	struct nlattr *attrs[TIPC_NLA_SOCK_MAX + 1] = {};
+	struct nlattr *info[TIPC_NLA_MAX + 1];
+	struct nlattr *attrs[TIPC_NLA_SOCK_MAX + 1];
 
 	mnl_attr_parse(nlh, sizeof(*genl), parse_attrs, info);
 	if (!info[TIPC_NLA_PUBL])
@@ -82,8 +82,8 @@ static int publ_list(__u32 sock)
 static int sock_list_cb(const struct nlmsghdr *nlh, void *data)
 {
 	struct genlmsghdr *genl = mnl_nlmsg_get_payload(nlh);
-	struct nlattr *info[TIPC_NLA_MAX + 1] = {};
-	struct nlattr *attrs[TIPC_NLA_SOCK_MAX + 1] = {};
+	struct nlattr *info[TIPC_NLA_MAX + 1];
+	struct nlattr *attrs[TIPC_NLA_SOCK_MAX + 1];
 
 	mnl_attr_parse(nlh, sizeof(*genl), parse_attrs, info);
 	if (!info[TIPC_NLA_SOCK])
@@ -97,7 +97,7 @@ static int sock_list_cb(const struct nlmsghdr *nlh, void *data)
 
 	if (attrs[TIPC_NLA_SOCK_CON]) {
 		__u32 node;
-		struct nlattr *con[TIPC_NLA_CON_MAX + 1] = {};
+		struct nlattr *con[TIPC_NLA_CON_MAX + 1];
 
 		mnl_attr_parse_nested(attrs[TIPC_NLA_SOCK_CON], parse_attrs, con);
 		node = mnl_attr_get_u32(con[TIPC_NLA_CON_NODE]);

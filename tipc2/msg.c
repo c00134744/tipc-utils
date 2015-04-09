@@ -48,7 +48,7 @@ int parse_attrs(const struct nlattr *attr, void *data)
 
 static int family_id_cb(const struct nlmsghdr *nlh, void *data)
 {
-	struct nlattr *tb[CTRL_ATTR_MAX+1] = {};
+	struct nlattr *tb[CTRL_ATTR_MAX+1];
 	struct genlmsghdr *genl = mnl_nlmsg_get_payload(nlh);
 	int *id = data;
 

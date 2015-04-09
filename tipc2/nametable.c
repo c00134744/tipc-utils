@@ -46,9 +46,9 @@ static int nametable_show_cb(const struct nlmsghdr *nlh, void *data)
 	int *iteration = data;
 	char port_id[PORTID_STR_LEN];
 	struct genlmsghdr *genl = mnl_nlmsg_get_payload(nlh);
-	struct nlattr *info[TIPC_NLA_MAX + 1] = {};
-	struct nlattr *attrs[TIPC_NLA_NAME_TABLE_MAX + 1] = {};
-	struct nlattr *publ[TIPC_NLA_PUBL_MAX + 1] = {};
+	struct nlattr *info[TIPC_NLA_MAX + 1];
+	struct nlattr *attrs[TIPC_NLA_NAME_TABLE_MAX + 1];
+	struct nlattr *publ[TIPC_NLA_PUBL_MAX + 1];
 
 	mnl_attr_parse(nlh, sizeof(*genl), parse_attrs, info);
 	if (!info[TIPC_NLA_NAME_TABLE])

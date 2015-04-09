@@ -44,8 +44,8 @@
 static int media_list_cb(const struct nlmsghdr *nlh, void *data)
 {
 	struct genlmsghdr *genl = mnl_nlmsg_get_payload(nlh);
-	struct nlattr *info[TIPC_NLA_MAX + 1] = {};
-	struct nlattr *attrs[TIPC_NLA_MEDIA_MAX + 1] = {};
+	struct nlattr *info[TIPC_NLA_MAX + 1];
+	struct nlattr *attrs[TIPC_NLA_MEDIA_MAX + 1];
 
 	mnl_attr_parse(nlh, sizeof(*genl), parse_attrs, info);
 	if (!info[TIPC_NLA_MEDIA])
@@ -82,9 +82,9 @@ static int media_get_cb(const struct nlmsghdr *nlh, void *data)
 {
 	int *prop = data;
 	struct genlmsghdr *genl = mnl_nlmsg_get_payload(nlh);
-	struct nlattr *info[TIPC_NLA_MAX + 1] = {};
-	struct nlattr *attrs[TIPC_NLA_MEDIA_MAX + 1] = {};
-	struct nlattr *props[TIPC_NLA_PROP_MAX + 1] = {};
+	struct nlattr *info[TIPC_NLA_MAX + 1];
+	struct nlattr *attrs[TIPC_NLA_MEDIA_MAX + 1];
+	struct nlattr *props[TIPC_NLA_PROP_MAX + 1];
 
 	mnl_attr_parse(nlh, sizeof(*genl), parse_attrs, info);
 	if (!info[TIPC_NLA_MEDIA])
