@@ -109,7 +109,7 @@ int parse_opts(struct opt *opts, struct cmdl *cmdl)
 		}
 		cnt++;
 		o->val = cmdl->argv[i + 1];
-		(cmdl->optind) += 2;
+		cmdl->optind += 2;
 	}
 
 	return cnt;
