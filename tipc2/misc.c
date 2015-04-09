@@ -46,6 +46,6 @@ uint32_t str2addr(char *str)
 	if (IN_RANGE(z, 0, 255) && IN_RANGE(c, 0, 4095) && IN_RANGE(n, 0, 4095))
 		return tipc_addr(z, c, n);
 
-	fprintf(stderr, "invalid network address\n");
+	fprintf(stderr, "invalid network address \"%s\"\n", str);
 	return 0;
 }
