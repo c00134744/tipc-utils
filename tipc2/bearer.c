@@ -230,7 +230,7 @@ static int enable_udp_bearer(struct nlmsghdr *nlh, struct opt *opts,
 
 	nest = mnl_attr_nest_start(nlh, TIPC_NLA_BEARER_UDP_OPTS);
 	mnl_attr_put(nlh, TIPC_NLA_UDP_LOCAL, loc->ai_addrlen, loc->ai_addr);
-	mnl_attr_put(nlh, TIPC_NLA_UDP_REMOTE, loc->ai_addrlen, loc->ai_addr);
+	mnl_attr_put(nlh, TIPC_NLA_UDP_REMOTE, rem->ai_addrlen, rem->ai_addr);
 	mnl_attr_nest_end(nlh, nest);
 
 	freeaddrinfo(rem);
