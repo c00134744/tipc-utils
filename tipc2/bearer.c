@@ -111,12 +111,51 @@ static int enable_l2_bearer(struct nlmsghdr *nlh, struct opt *opts,
 	return 0;
 }
 
+static int get_netid_cb(const struct nlmsghdr *nlh, void *data)
+{
+	struct genlmsghdr *genl = mnl_nlmsg_get_payload(nlh);
+	struct nlattr *info[TIPC_NLA_MAX + 1];
+	struct nlattr *attrs[TIPC_NLA_NET_MAX + 1];
+	int *netid = (int*)data;
+
+	mnl_attr_parse(nlh, sizeof(*genl), parse_attrs, info);
+	if (!info[TIPC_NLA_NET])
+		return MNL_CB_ERROR;
+	mnl_attr_parse_nested(info[TIPC_NLA_NET], parse_attrs, attrs);
+	if (!attrs[TIPC_NLA_NET_ID])
+		return MNL_CB_ERROR;
+	*netid = mnl_attr_get_u32(attrs[TIPC_NLA_NET_ID]);
+	return MNL_CB_OK;
+}
+
+static int generate_multicast(short af, char *buf, int bufsize)
+{
+	int netid;
+	char mnl_msg[MNL_SOCKET_BUFFER_SIZE];
+	struct nlmsghdr *nlh;
+
+	if (!(nlh = msg_init(mnl_msg, TIPC_NL_NET_GET))) {
+		fprintf(stderr, "error, message initialization failed\n");
+		return -EINVAL;
+	}
+	if (msg_dumpit(nlh, get_netid_cb, &netid)) {
+		fprintf(stderr, "error, failed to fetch TIPC network id from kernel\n");
+		return -EINVAL;
+	}
+	if (af == AF_INET)
+		snprintf(buf, bufsize, "228.0.%u.%u", (netid>>8) & 0xFF, netid & 0xFF);
+	else
+		snprintf(buf, bufsize, "ff02::%u", netid);
+	return 0;
+}
+
 static int enable_udp_bearer(struct nlmsghdr *nlh, struct opt *opts,
 			     struct cmdl *cmdl)
 {
 	int err;
 	struct opt *opt;
 	struct nlattr *nest;
+	char buf[64];
 	char *locport = "6118";
 	char *remport = "6118";
 	char *locip = NULL;
@@ -164,6 +203,14 @@ static int enable_udp_bearer(struct nlmsghdr *nlh, struct opt *opts,
 		return err;
 	}
 
+	if (!remip) {
+		if (generate_multicast(loc->ai_family, buf, sizeof(buf))) {
+			fprintf(stderr, "Failed to generate multicast address\n");
+			return -EINVAL;
+		}
+		remip = buf;
+	}
+
 	if ((err = getaddrinfo(remip, remport, &hints, &rem))) {
 		fprintf(stderr, "UDP remote address error: %s\n",
 			gai_strerror(err));
@@ -185,18 +232,6 @@ static int enable_udp_bearer(struct nlmsghdr *nlh, struct opt *opts,
 	mnl_attr_put(nlh, TIPC_NLA_UDP_LOCAL, loc->ai_addrlen, loc->ai_addr);
 	mnl_attr_put(nlh, TIPC_NLA_UDP_REMOTE, loc->ai_addrlen, loc->ai_addr);
 	mnl_attr_nest_end(nlh, nest);
-
-	/* TODO probe */
-#if 0
-	/* If the remote address is not specified, generate either a v4 or v6
-	 * based on the TIPC network ID*/
-	if (!(opt = get_opt(cmd, "remip"))) {
-		remip = generate_multicast(loc->ai_family);
-		printf("Generated IP addr:%s\n", remip);
-	} else {
-		remip = opt->val;
-	}
-#endif
 
 	freeaddrinfo(rem);
 	freeaddrinfo(loc);
