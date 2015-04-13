@@ -352,7 +352,7 @@ int add_udp_bearer(struct nlmsghdr *nlh, struct opt *opts)
 		fprintf(stderr, "error: missing bearer name\n");
 		return -EINVAL;
 	}
-	snprintf(id, sizeof(id), "eth:%s", opt->val);
+	snprintf(id, sizeof(id), "udp:%s", opt->val);
 
 	mnl_attr_put_strz(nlh, TIPC_NLA_BEARER_NAME, id);
 
